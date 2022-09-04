@@ -37,7 +37,7 @@ sumFun(1, 6, 0)
 
 
 def fact(n):
-    if n == 1 or n==0:
+    if n == 1 or n == 0:
         return 1
     else:
         return n * fact(n - 1)
@@ -45,14 +45,13 @@ def fact(n):
 
 print("fact is ", fact(5))
 
-p=0
-q=1
-val=0
-n=10
+p = 0
+q = 1
+val = 0
+n = 10
 for _ in range(n):
-    val=p+q
-    p=q
-    q=val
+    val = p+q
+    p = q
+    q = val
 
-print("iterative Fibonacci ",val)
-
+print("iterative Fibonacci ", val)
