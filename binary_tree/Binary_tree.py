@@ -77,17 +77,18 @@ class Tree:
             if root.right is not None:
                 q.append(root.right)
 
-
-    def is_balance(self,root):
+    def is_balance(self, root):
         def dfs1(root):
-            if root is None: return [True, 0]
+            if root is None:
+                return [True, 0]
 
             left, right = dfs1(root.left), dfs1(root.right)
             balance = (left[0] and right[0] and abs(left[1] - right[1]) <= 1)
             return (balance, 1 + max(left[1], right[1]))
 
         return dfs1(root)[0]
-    def invert(self,node):
+
+    def invert(self, node):
 
         if (node == None):
             return
@@ -103,7 +104,6 @@ class Tree:
             temp = node.left
             node.left = node.right
             node.right = temp
-
 
 
 tree = Tree()
@@ -228,18 +228,46 @@ print("\n")
 print("Inorder traversal of the constructed tree is")
 printInorder(root)
 
-#top view of tree
-def topview(root):
-     q=[(root,0)]
-     freq={}
-     while len(q)!=0:
-            for i in q:
-                if i[1] not in freq:
-                    i[0]:i[1]
-                else:
-                    pass
-            temp=q.pop()
-            dis=temp[1]
-            q.append((temp[0].left,dis-1))
-            q.append((temp[0].right,dis+1))
+# top view of tree
 
+
+def topview(root):
+    q = [(root, 0)]
+    freq = {}
+    while len(q) != 0:
+        for i in q:
+            if i[1] not in freq:
+                i[0]: i[1]
+            else:
+                pass
+        temp = q.pop()
+        dis = temp[1]
+        q.append((temp[0].left, dis-1))
+        q.append((temp[0].right, dis+1))
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+# Given the root of a binary tree, return the average value of the nodes on each level in the form of an array. Answers within 10-5 of the actual answer will be accepted.
+
+
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        q = []
+        ans = []
+        q.append(root)
+        while q:
+            lenth = len(q)
+            temp = []
+            for i in range(lenth):
+                root = q.pop(0)
+                if root:
+                    temp.append(root.val)
+                    q.append(root.left)
+                    q.append(root.right)
+            if temp:
+                ans.append(sum(temp)/len(temp))
+        return ans
