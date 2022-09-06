@@ -42,3 +42,89 @@ if __name__ == '__main__':
         tc -= 1
 
 # } Driver Code Ends
+
+# 1480. Running Sum of 1d Array
+
+
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        for i in range(1, len(nums)):
+            nums[i] = nums[i]+nums[i-1]
+        return nums
+
+
+# 205. Isomorphic Strings
+
+# Given two strings s and t, determine if they are isomorphic.
+
+# Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+# All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+` `
+
+
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        dict_s = dict()
+        count_s = 0
+        dict_t = dict()
+        count_t = 0
+
+        for i in s:
+            if i not in dict_s:
+                dict_s[i] = count_s
+                count_s += 1
+            else:
+                continue
+
+        for i in t:
+            if i not in dict_t:
+                dict_t[i] = count_t
+                count_t += 1
+            else:
+                continue
+        list_s = list()
+        for i in s:
+            list_s.append(dict_s[i])
+
+        list_t = list()
+        for i in t:
+            list_t.append(dict_t[i])
+
+        if list_s == list_t:
+            return True
+        else:
+            return False
+
+
+# 392. Is Subsequence
+
+# Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+# A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+
+class Solution(object):
+    def isSubsequence(self, s, t):
+        sq = s
+        tq = t
+        i = 0
+        j = 0
+        while i < len(sq) and j < len(tq):
+            if sq[i] == tq[j]:
+                i += 1
+            j += 1
+
+        if i == len(sq):
+            return True
+        else:
+            return False
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
