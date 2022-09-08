@@ -271,3 +271,111 @@ class Solution:
             if temp:
                 ans.append(sum(temp)/len(temp))
         return ans
+
+
+# 429. N-ary Tree Level Order Traversal
+
+# Given an n-ary tree, return the level order traversal of its nodes' values.
+
+# Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value(See examples).
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+
+class Solution(object):
+    def levelOrder(self, root):
+        ans = []
+        q = []
+        q.append(root)
+        while q:
+            length = len(q)
+            temp = []
+            for i in range(length):
+                root = q.pop(0)
+                if root:
+                    temp.append(root.val)
+                    for x in root.children:
+                        q.append(x)
+            if temp:
+                ans.append(temp)
+        return ans
+
+
+# 589. N-ary Tree Preorder Traversal
+# Given the root of an n-ary tree, return the preorder traversal of its nodes' values.
+
+# Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value(See examples)
+"""
+# Definition for a Node.
+class Node(object):
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+
+class Solution(object):
+    def preorder(self, root):
+        ans = []
+
+        def pre(root):
+            if not root:
+                return ans
+            ans.append(root.val)
+            for x in root.children:
+                pre(x)
+        pre(root)
+        return ans
+
+
+# 814. Binary Tree Pruning
+
+# Given the root of a binary tree, return the same tree where every subtree(of the given tree) not containing a 1 has been removed.
+
+# # Definition for a binary tree node.
+# A subtree of a node node is node plus every node that is a descendant of node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def pruneTree(self, root):
+        if not root:
+            return None
+        if self.pruneTree(root.left) is None:
+            root.left = None
+        if self.pruneTree(root.right) is None:
+            root.right = None
+        if root.val != 1 and root.left is None and root.right is None:
+            root = None
+        return root
+
+
+# 21. Merge Two Sorted Lists
+# You are given the heads of two sorted linked lists list1 and list2.
+# Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+# Return the head of the merged linked list.
+# Input: list1 = [1, 2, 4], list2 = [1, 3, 4]
+# Output: [1, 1, 2, 3, 4, 4]
+
+class Solution:
+    def mergeTwoLists(self, list1, list2):
+        cur = dummy = ListNode()
+        while list1 and list2:
+            if list1.val < list2.val:
+                cur.next = list1
+                list1, cur = list1.next, list1
+            else:
+                cur.next = list2
+                list2, cur = list2.next, list2
+
+        if list1 or list2:
+            cur.next = list1 if list1 else list2
+
+        return dummy.next
