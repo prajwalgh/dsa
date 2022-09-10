@@ -379,3 +379,21 @@ class Solution:
             cur.next = list1 if list1 else list2
 
         return dummy.next
+
+
+# 206. Reverse Linked List
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        curr = dummy = None
+        while head:
+            temp = head.next
+            head.next = curr
+            curr = head
+            head = temp
+        return curr
