@@ -128,3 +128,25 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+
+
+# 409. Longest Palindrome
+# Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+# Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+class Solution(object):
+    def longestPalindrome(self, s):
+        count = Counter(s)
+        result = 0
+        odd = False
+        for i in count.values():
+            if i % 2 == 0:
+                result += i
+            if i % 2 == 1:
+                odd = True
+                result = result+i-1
+        if odd:
+            return result+1
+        else:
+            return result
