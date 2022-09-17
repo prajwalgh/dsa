@@ -305,9 +305,34 @@ class Solution(object):
                 ans.append(temp)
         return ans
 
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
+
+class Solution(object):
+    def levelOrder(self, root):
+        ans = []
+        q = []
+        q.append(root)
+        while q:
+            length = len(q)
+            temp = []
+            for i in range(length):
+                node = q.pop(0)
+                if node:
+                    temp.append(node.val)
+                    q.append(node.left)
+                    q.append(node.right)
+            if temp:
+                ans.append(temp)
+        return ans
 # 589. N-ary Tree Preorder Traversal
 # Given the root of an n-ary tree, return the preorder traversal of its nodes' values.
+
 
 # Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value(See examples)
 """

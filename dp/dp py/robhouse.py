@@ -64,3 +64,53 @@ class Solution(object):
         for i in range(2, k+1):
             dp0, dp1 = dp1, max(dp1, dp0+i*counts[i])
         return dp1
+
+
+# 55. Jump Game
+# Medium
+# You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+
+# Return true if you can reach the last index, or false otherwise.
+
+
+# Example 1:
+
+# Input: nums = [2, 3, 1, 1, 4]
+# Output: true
+# Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+
+class Solution(object):
+    def canJump(self, nums):
+        goal = len(nums)-1
+        for i in range(len(nums)-1, -1, -1):
+            if i+nums[i] >= goal:
+                goal = i
+        if goal == 0:
+            return True
+        else:
+            return False
+
+
+# dp solution
+# below code in c++
+# class Solution(object):
+#       def canJump( nums) :
+#         dp=[o]*(len(nums)+1)
+#         dp[0].first = 1
+#         dp[0].second = nums[0]
+#         for (int i=1
+#              i < nums.size()
+#              i++) {
+#             if (dp[i - 1].second >= i) {
+#                 dp[i].first = 1
+#                 dp[i].second = max(dp[i-1].second, i + nums[i])
+#             }
+#             else {
+#                 dp[i].first = 0
+#                 dp[i].second = 0
+#             }
+#         }
+#         return dp[nums.size() - 1].first
+#     }
+# }
