@@ -17,6 +17,5 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        
-# @lc code=end
 
+# @lc code=end
