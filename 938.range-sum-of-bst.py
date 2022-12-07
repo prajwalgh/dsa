@@ -13,18 +13,17 @@
 #         self.right = right
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-         global ans
-          ans = 0
+        global ans
+        ans = 0
 
-           def dfs(root):
-                if not root:
-                    return
-                if low <= root.val <= high:
-                    global ans
-                    ans += root.val
-                dfs(root.left)
-                dfs(root.right)
-            dfs(root)
-            return ans
+        def dfs(root):
+            if not root:
+                return
+            if low <= root.val <= high:
+                global ans
+                ans += root.val
+            dfs(root.left)
+            dfs(root.right)
+        dfs(root)
+        return ans
 # @lc code=end
-
