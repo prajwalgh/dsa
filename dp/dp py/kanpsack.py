@@ -44,7 +44,8 @@ class Solution:
         elif wt[n-1] > W:
             self.memo[n][W] = self.knapSack(W, wt, val, n-1)
             return self.memo[n][W]
-
+# memoization approach -----------------------------------
+# dp solution ...........................
 # A Dynamic Programming based Python
 # Program for 0-1 Knapsack problem
 # Returns the maximum value that can
@@ -72,6 +73,3 @@ def knapSack_memo(W, wt, val, n):
 
 
 print(knapSack_memo(W, wt, val, n))
-
-# This code is contributed by Bhavya Jain
-# memoization approach -----------------------------------
