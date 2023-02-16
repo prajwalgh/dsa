@@ -60,8 +60,8 @@ def findPartition(arr, n):
             part[i][j] = part[i][j - 1]
 
             if i >= arr[j - 1]:
-            part[i][j] = (part[i][j] or
-                          part[i - arr[j - 1]][j - 1])
+                part[i][j] = (part[i][j] or
+                              part[i - arr[j - 1]][j - 1])
 
     return part[sum // 2][n]
 
