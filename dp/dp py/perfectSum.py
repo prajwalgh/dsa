@@ -3,8 +3,8 @@ def perfectSum(arr, N, x):
     # code here
     dp = ([[0 for i in range(x+1)] for i in range(N+1)])
     dp[0][0] = 1
-    for i in range(1, x+1):
-        dp[0][i] = 0
+    # for i in range(1, x+1):
+    #     dp[0][i] = 0
     for i in range(1, N+1):
         for j in range(x+1):
             if j < arr[i-1]:
